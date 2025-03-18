@@ -15,6 +15,7 @@ const resources = [
         <polyline points="14 2 14 8 20 8"></polyline>
       </svg>
     ),
+    image: "https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
   },
   {
     id: 2,
@@ -30,6 +31,7 @@ const resources = [
         <line x1="15" y1="3" x2="15" y2="21"></line>
       </svg>
     ),
+    image: "https://images.unsplash.com/photo-1606857521015-7f9fcf423740?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
   },
   {
     id: 3,
@@ -46,6 +48,7 @@ const resources = [
         <line x1="3" y1="18" x2="3.01" y2="18"></line>
       </svg>
     ),
+    image: "https://images.unsplash.com/photo-1494229789400-7cfa2d3b3348?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
   },
   {
     id: 4,
@@ -58,6 +61,7 @@ const resources = [
         <polyline points="14 2 14 8 20 8"></polyline>
       </svg>
     ),
+    image: "https://images.unsplash.com/photo-1517048676732-d65bc937f952?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
   },
   {
     id: 5,
@@ -73,6 +77,7 @@ const resources = [
         <line x1="15" y1="3" x2="15" y2="21"></line>
       </svg>
     ),
+    image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
   },
   {
     id: 6,
@@ -85,13 +90,15 @@ const resources = [
         <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
       </svg>
     ),
+    image: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
   },
 ];
 
 const ResourcesSection: React.FC = () => {
   return (
-    <section id="resources" className="section-padding bg-gradient-to-b from-white to-blue-50">
-      <div className="container-wide">
+    <section id="resources" className="section-padding bg-gradient-to-b from-amber-50/30 to-purple-50/30 relative">
+      <div className="absolute inset-0 bg-[radial-gradient(#e0e7ff_1px,transparent_1px)] [background-size:20px_20px] opacity-40"></div>
+      <div className="container-wide relative z-10">
         <RevealAnimation direction="up" className="mb-12 text-center">
           <h2 className="text-zinc-900 mb-4">Essential Resources</h2>
           <p className="max-w-2xl mx-auto text-zinc-600">
@@ -102,23 +109,31 @@ const ResourcesSection: React.FC = () => {
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {resources.map((resource, index) => (
             <RevealAnimation key={resource.id} direction="scale" delay={index * 75}>
-              <div className="card-hover h-full rounded-xl p-6 bg-white border border-zinc-100 shadow-sm">
-                <div className="flex justify-between items-start mb-4">
-                  <div className="w-10 h-10 rounded-lg bg-blue-100 text-blue-700 flex items-center justify-center">
-                    {resource.icon}
+              <div className="card-hover h-full rounded-xl overflow-hidden bg-white border border-zinc-100 shadow-sm">
+                <div className="h-40 overflow-hidden relative">
+                  <img src={resource.image} alt={resource.title} className="w-full h-full object-cover" />
+                  <div className="absolute top-3 right-3">
+                    <span className="text-xs font-medium py-1 px-2.5 rounded-full bg-white/90 text-zinc-700 backdrop-blur-sm">
+                      {resource.category}
+                    </span>
                   </div>
-                  <span className="text-xs font-medium py-1 px-2.5 rounded-full bg-zinc-100 text-zinc-700">
-                    {resource.category}
-                  </span>
                 </div>
                 
-                <h3 className="text-lg font-semibold text-zinc-900 mb-2">{resource.title}</h3>
-                <p className="text-zinc-600 text-sm mb-4">{resource.description}</p>
-                
-                <a href="#" className="link-hover text-sm flex items-center gap-1 font-medium">
-                  Download
-                  <ArrowRightIcon className="w-4 h-4" />
-                </a>
+                <div className="p-6">
+                  <div className="flex items-start gap-3 mb-4">
+                    <div className="w-10 h-10 rounded-lg bg-blue-100 text-blue-700 flex items-center justify-center flex-shrink-0">
+                      {resource.icon}
+                    </div>
+                    <h3 className="text-lg font-semibold text-zinc-900">{resource.title}</h3>
+                  </div>
+                  
+                  <p className="text-zinc-600 text-sm mb-4">{resource.description}</p>
+                  
+                  <a href="#" className="link-hover text-sm flex items-center gap-1 font-medium">
+                    Download
+                    <ArrowRightIcon className="w-4 h-4" />
+                  </a>
+                </div>
               </div>
             </RevealAnimation>
           ))}

@@ -16,7 +16,8 @@ const phases = [
       "Allocate resources and budget",
       "Assess risks and develop mitigation strategies"
     ],
-    color: "blue"
+    color: "blue",
+    image: "https://images.unsplash.com/photo-1507925921958-8a62f3d1a50d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
   },
   {
     id: "execute",
@@ -30,7 +31,8 @@ const phases = [
       "Implement quality control measures",
       "Document progress and address emerging issues"
     ],
-    color: "emerald"
+    color: "emerald",
+    image: "https://images.unsplash.com/photo-1531538606174-0f90ff5dce83?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
   },
   {
     id: "monitor",
@@ -44,7 +46,8 @@ const phases = [
       "Manage scope changes through formal process",
       "Compare actual progress against planned milestones"
     ],
-    color: "amber"
+    color: "amber",
+    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
   },
   {
     id: "adjust",
@@ -58,7 +61,8 @@ const phases = [
       "Update project plans and communicate changes",
       "Document lessons learned for future projects"
     ],
-    color: "violet"
+    color: "violet",
+    image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
   }
 ];
 
@@ -111,36 +115,26 @@ const GuideSection: React.FC = () => {
                 className={`order-${index % 2 === 0 ? '2' : '1'}`}
               >
                 <div className="aspect-square w-full max-w-lg mx-auto lg:max-w-none rounded-2xl overflow-hidden border border-zinc-200 shadow-sm bg-zinc-50 flex items-center justify-center p-4">
-                  <div className={`w-full max-w-sm mx-auto bg-white border border-${phase.color}-100 rounded-xl p-6 shadow-sm`}>
-                    <div className={`w-10 h-10 rounded-lg flex items-center justify-center bg-${phase.color}-100 text-${phase.color}-600 mb-4`}>
-                      {phase.icon}
-                    </div>
+                  <div className="w-full h-full rounded-xl overflow-hidden relative">
+                    <img 
+                      src={phase.image} 
+                      alt={`${phase.title} phase visualization`} 
+                      className="w-full h-full object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
                     
-                    <h4 className="text-lg font-semibold text-zinc-900 mb-3">
-                      {phase.title} Phase Template
-                    </h4>
-                    
-                    <div className="space-y-3 mb-6">
-                      {phase.steps.slice(0, 3).map((step, i) => (
-                        <div 
-                          key={i} 
-                          className={`flex items-center p-2.5 rounded-lg ${i === 0 ? `bg-${phase.color}-50 border border-${phase.color}-100` : 'border border-zinc-100'}`}
-                        >
-                          <div className="w-4 h-4 mr-3 rounded-sm border border-zinc-300 flex-shrink-0 flex items-center justify-center">
-                            {i === 0 && (
-                              <svg xmlns="http://www.w3.org/2000/svg" className={`w-3 h-3 text-${phase.color}-600`} viewBox="0 0 20 20" fill="currentColor">
-                                <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                              </svg>
-                            )}
-                          </div>
-                          <span className="text-sm text-zinc-700">{step}</span>
+                    <div className={`absolute bottom-0 left-0 right-0 p-6 bg-white/80 backdrop-blur-sm border-t border-${phase.color}-100`}>
+                      <div className="flex items-center gap-3">
+                        <div className={`w-10 h-10 rounded-lg flex items-center justify-center bg-${phase.color}-100 text-${phase.color}-600`}>
+                          {phase.icon}
                         </div>
-                      ))}
-                    </div>
-                    
-                    <div className="flex justify-between items-center">
-                      <div className="text-sm text-zinc-500">1 of {phase.steps.length} tasks</div>
-                      <div className={`text-sm font-medium text-${phase.color}-600`}>Download Template</div>
+                        <div>
+                          <h4 className="text-lg font-semibold text-zinc-900">
+                            {phase.title} Phase Template
+                          </h4>
+                          <div className={`text-sm font-medium text-${phase.color}-600`}>Download Template</div>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>

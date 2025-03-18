@@ -7,7 +7,8 @@ const Hero: React.FC = () => {
   return (
     <section className="pt-32 pb-20 md:pt-44 md:pb-28 overflow-hidden">
       <div className="container-wide relative">
-        <div className="absolute -top-24 -right-24 w-96 h-96 bg-blue-50 rounded-full blur-3xl opacity-50"></div>
+        <div className="absolute -top-24 -right-24 w-96 h-96 bg-blue-100 rounded-full blur-3xl opacity-40"></div>
+        <div className="absolute top-40 -left-24 w-72 h-72 bg-emerald-100 rounded-full blur-3xl opacity-30"></div>
         
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 relative">
           <RevealAnimation direction="fade" className="space-y-8">
@@ -71,6 +72,11 @@ const Hero: React.FC = () => {
           <RevealAnimation direction="scale" delay={300} className="relative">
             <div className="relative aspect-square w-full max-w-lg lg:max-w-none mx-auto">
               <div className="w-full h-full rounded-2xl overflow-hidden bg-gradient-to-r from-zinc-100 to-blue-50 shadow-xl">
+                <img 
+                  src="https://images.unsplash.com/photo-1542626991-cbc4e32524cc?ixlib=rb-4.0.3&auto=format&fit=crop&w=1080&q=80" 
+                  alt="Project management dashboard" 
+                  className="absolute inset-0 w-full h-full object-cover opacity-10"
+                />
                 <div className="absolute inset-0 bg-[radial-gradient(#e0e7ff_1px,transparent_1px)] [background-size:16px_16px] [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,#000_70%,transparent_100%)]"></div>
                 
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center">

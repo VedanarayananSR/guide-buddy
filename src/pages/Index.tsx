@@ -40,14 +40,20 @@ const Index: React.FC = () => {
   }, []);
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col bg-gradient-to-b from-blue-50/50 to-white">
       <Navbar />
       <main>
         <Hero />
-        <MethodologyCards />
-        <GuideSection />
+        <div className="bg-gradient-to-b from-blue-50/70 to-emerald-50/30">
+          <MethodologyCards />
+        </div>
+        <div className="bg-gradient-to-b from-emerald-50/30 to-amber-50/30">
+          <GuideSection />
+        </div>
         <ResourcesSection />
-        <ContactSection />
+        <div className="bg-gradient-to-b from-purple-50/30 to-blue-50/50">
+          <ContactSection />
+        </div>
       </main>
       <Footer />
     </div>
